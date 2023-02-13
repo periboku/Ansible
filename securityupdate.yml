@@ -1,0 +1,7 @@
+-
+    name: security_updates_awslnx2
+    hosts: prod
+    tasks:
+        - name: security_update
+          command: sudo yum update --security -y
+          become: yes

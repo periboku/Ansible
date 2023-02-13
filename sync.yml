@@ -1,0 +1,7 @@
+ - hosts: octopus-prod
+   tasks:
+    - name: sync the app
+      synchronize: 
+        src: ./app 
+        dest: /var/www/html/app
+      become: yes

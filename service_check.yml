@@ -1,0 +1,7 @@
+ - hosts: octopus-prod
+   tasks:
+   - name: configure port number
+     lineinfile: 
+        path: /etc/config.cfg 
+        regexp: '^port' 
+        line: 'port=80'

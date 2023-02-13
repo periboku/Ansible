@@ -1,0 +1,11 @@
+-
+    name: cloudwatchagentinstall
+    hosts: dev
+    tasks:
+        - name: agent_install
+          command: sudo yum install amazon-cloudwatch-agent -y
+          become: yes
+
+        - name: startservice
+          command: sudo amazon-cloudwatch-agent-ctl -a start
+          become: yes

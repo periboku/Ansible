@@ -1,0 +1,11 @@
+ - hosts: partner
+   tasks:
+    - name: copy config file
+      become: yes
+      copy: 
+        src: /var/lib/jenkins/workspace/Partner_Dashboard_Api
+        dest: /home/ec2-user/Partner_Dashboard_Api
+        owner: 
+        group: 
+        mode: 
+

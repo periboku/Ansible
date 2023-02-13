@@ -1,0 +1,12 @@
+-
+    name: cloudwatchagent_service_restart
+    hosts: dev
+    tasks:
+      - name: stop service
+        command: sudo amazon-cloudwatch-agent-ctl -a stop
+        become: yes
+
+      - name: startservice
+        command: sudo amazon-cloudwatch-agent-ctl -a start
+        become: yes
+

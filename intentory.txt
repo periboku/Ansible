@@ -1,0 +1,6 @@
+[local]
+master ansible_host=192.168.0.103 ansible_password=karmakoma 
+[slave]
+slave1 ansible_host=192.168.0.104 ansible_password=karmakoma
+httpd  ansible_host=192.168.0.105 ansible_password=karmakoma 
+db ansible_host=192.168.0.106 ansible_password=karmakoma 

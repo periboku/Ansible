@@ -23,7 +23,7 @@
       service:
         name: httpd
         state: started 
-        
+        enabled: yes
          
   handlers: 
     - name: restart httpd

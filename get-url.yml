@@ -1,0 +1,1 @@
+ansible slave1 -i intentory.txt -m get_url -a "url=https://www.7-zip.org/a/7z2201-linux-x64.tar.xz dest=/tmp/"            

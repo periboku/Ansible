@@ -1,0 +1,32 @@
+---
+- hosts: slave2
+  tasks: 
+    - name: apache kur
+      yum: 
+        name: httpd
+        state: latest
+
+    - name: config'i download et
+      get_url:
+        url: https://raw.githubusercontent.com/vincesesto/ansibleanswers/master/chapter2/000-default.conf
+        dest: /tmp/httpd.conf
+
+    - name: config'i kopyala
+      copy: 
+        src: /tmp/httpd.conf 
+        dest: /tmp/httpd.conf
+        remote_src: yes
+      notify: 
+      - restart httpd
+    
+    - name: apachi baslat
+      service:
+        name: httpd
+        state: started 
+        
+         
+  handlers: 
+    - name: restart httpd
+      service: 
+        name: apache
+        state: restarted

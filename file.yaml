@@ -1,0 +1,5 @@
+#dosya yaratmak için
+ansible slave -i intentory.txt -m file -a "path=/tmp/yarako.txt owner=root group=root state=touch"
+
+#klasör yaratmak için
+ansible slave -i intentory.txt -m file -a "path=/tmp/yarako.txt owner=root group=root state=directory"

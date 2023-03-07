@@ -1,0 +1,12 @@
+- hosts: slave                                                                                                           
+  tasks:                                                                                                                    
+    - name: git kur                                                                                                    
+      yum:                                                                                                                  
+        name: git                                                                                                           
+        state: present                                                                                                      
+        update_cache: yes                                                                                                 
+                                                                                                                                                                                                                       
+    - name: git repo çek                                                                                                    
+      ansible.builtin.git:                                                                                                 
+        repo: 'https://github.com/vincesesto/markdown-cheatsheet.git'                              
+        dest: /tmp/markdown-cheatsheet/

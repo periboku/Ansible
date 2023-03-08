@@ -1,0 +1,27 @@
+---
+- hosts: httpd
+  tasks: 
+    - name: apache kur
+      yum: 
+        name: httpd
+        state: latest
+
+    - name: config'i kopyala
+      copy: 
+        src: /tmp/httpd.conf 
+        dest: /tmp/httpd.conf
+        remote_src: yes
+      notify: 
+      - restart httpd
+    
+    - name: apachi baslat
+      service:
+        name: httpd
+        state: started 
+        enabled: yes
+         
+  handlers: 
+    - name: restart httpd
+      service: 
+        name: apache
+        state: restarted

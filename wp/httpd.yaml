@@ -1,5 +1,5 @@
 ---
-- hosts: slave2
+- hosts: httpd
   tasks: 
     - name: apache kur
       yum: 
@@ -19,6 +19,9 @@
         name: httpd
         state: started 
         enabled: yes
+
+    -name: 
+      yum:
          
   handlers: 
     - name: restart httpd

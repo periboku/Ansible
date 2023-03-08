@@ -1,6 +1,5 @@
 ---
 - hosts: db
-  vars: 
     mysql_root_pass: araba
     yumlar: 
       - python3-mysql

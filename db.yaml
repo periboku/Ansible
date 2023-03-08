@@ -1,7 +1,8 @@
 ---
 - hosts: db
   vars: 
-    item: 
+    mysql_root_pass: araba
+    yumlar: 
       - python3-mysql
       - mysql-server
 
@@ -9,7 +10,7 @@
   tasks:
     - name: mysql ve phyton kur
       yum:
-        name: "{{ item }}" 
+        name: "{{ yumlar }}" 
         state: present
               
     - name: sql'i başlat
@@ -17,3 +18,34 @@
         name: mariadb
         state: started
         enabled: true
+  
+    - name: rootpass
+      mysql_user:
+        login_host: 'localhost'
+        login_user: 'root'
+        login_password: '{{ mysql_root_pass }}'
+        name: 'root'
+        password: '{{ mysql_root_pass }}'
+        state: present
+        check_implicit_admin: yes
+        priv: "*.*:ALL,GRANT"
+    
+    - name: create db
+      mysql_db:
+        name: testdb
+        state: present
+        login_user: root
+        login_password: '{{ mysql_root_pass }}'
+
+    - name: add data
+      copy: 
+        src: /home/xeno/Work/ansible/nation.sql
+        dest: /tmp/nation.sql
+
+    - name: create tables
+      mysql_db:
+        name: testdb
+        state: import
+        target: /tmp/nation.sql
+        login_user: root
+        login_password: '{{ mysql_root_pass }}'

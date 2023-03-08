@@ -6,11 +6,6 @@
         name: httpd
         state: latest
 
-    - name: config'i download et
-      get_url:
-        url: https://raw.githubusercontent.com/vincesesto/ansibleanswers/master/chapter2/000-default.conf
-        dest: /tmp/httpd.conf
-
     - name: config'i kopyala
       copy: 
         src: /tmp/httpd.conf 

@@ -1,0 +1,14 @@
+php_modules: 
+  - php
+  - php-curl
+  - php-gd
+  - php-mbstring
+  - php-xml
+  - php-xmlrpc
+  - php-soap
+  - php-intl
+  - php-zip
+
+mysql_root_pass: araba
+
+mysql_

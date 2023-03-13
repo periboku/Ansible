@@ -1,0 +1,43 @@
+---
+- hosts: mysql
+  tasks:
+    - name: mysql kur
+      yum: 
+        name: mariadb
+        state: latest
+  
+    - name: mysql başlat
+      service:
+        name: mariadb
+        state: started
+        enabled: true
+    
+#    - name: mysql root password configuration
+#      mysql_user:
+#        login_host: 'localhost'
+#        login_user: 'root'
+#        login_password: 'araba'
+#        name: 'root'
+#        password: 'araba'
+#        state: present
+#        check_implicit_admin: yes
+#
+#    - name: create db
+#      mysql_db: 
+#        name: testdb
+#        state: present
+#        login_user: root
+#        login_password: araba
+#
+#    - name: add data
+#      copy: 
+#        src:
+#        dest: 
+#
+#    - name: create tables
+#      mysql_db:
+#        name: testdb
+#        state: import
+#        target: /tmp/nation.sql
+#        login_user: root
+#        login_password: araba

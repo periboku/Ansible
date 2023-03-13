@@ -1,2 +1,51 @@
 ---
-hosts
+- hosts: nginx
+  tasks:
+    - name: nginx kur
+      ignore_errors: true
+      yum: 
+        name: nginx
+        state: latest
+    
+    - name: libseliux phython3 kur
+      ignore_errors: true
+      yum: 
+        name: libselinux-python3
+        state: installed
+
+    - name: default config'den root'u çıkar
+      copy:
+        src: /home/xeno/Work/ansible/Ansible/pipeline/files/nginx.conf
+        dest: /etc/nginx/nginx.conf
+      become: yes
+
+    - name: nginx app configden
+      copy: 
+        src: /home/xeno/Work/ansible/Ansible/pipeline/files/server.conf
+        dest: /etc/nginx/conf.d/server.conf
+      become: yes
+
+    - name: siteyi at 
+      copy: 
+        src: /home/xeno/Work/ansible/Ansible/pipeline/files/index.html
+        dest: /var/www/html/
+        owner: nginx
+        group: nginx
+      become: yes
+
+    - name: firewall'a http'yi ekle
+      shell: firewall-cmd --zone=public --add-service=http
+        
+    - name: firewall permanent ekle
+      shell: firewall-cmd --zone=public --add-service=http --permanent
+        
+    - name: firewall kurallarını baştan reload et    
+      shell: firewall-cmd --reload
+        
+
+    - name: nginx servisi baslat
+      service: 
+        name: nginx
+        state: started
+        enabled: yes
+#
